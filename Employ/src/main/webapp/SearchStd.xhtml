@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<link rel="stylesheet"  href="css/College.css" />
+</h:head>
+<h:body>
+<ui:include src="/NavbarCol.xhtml" />
+<div>
+<h:form>
+DateOfJoin:
+<h:inputText  value="#{studentdetails.dateOfJoin}" required="true"
+			requiredMessage="Date is mandatory" >
+			</h:inputText>
+			<br/>
+			<br/>
+			<h:commandButton value="Search"/>
+			
+			
+			<h:dataTable value="#{collegeDAO.searchstd(studentdetails.dateOfJoin)}" var="h"
+			boarder="3">
+			<h:column>
+				<f:facet name="header">StudentId </f:facet>
+				<h:outputText value="#{h.studentId}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">StudentName </f:facet>
+				<h:outputText value="#{h.studentname}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">DateOfJoin </f:facet>
+				<h:outputText value="#{h.dateOfJoin}" />
+			</h:column>
+			
+			</h:dataTable>
+			</h:form>
+			</div>
+</h:body>
+</html>
